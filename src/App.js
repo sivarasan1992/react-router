@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import HomeComponent from './Components/Home';
+import AboutComponent from './Components/About';
+import TeamComponent from './Components/Team';
+import HeaderComponent from './Components/Header';
+import NotFoundComponent from './Components/NotFound';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+        <HeaderComponent />
+        <Switch>
+        <Route exact path='/' component={HomeComponent}/>
+        <Route exact path='/about' component={AboutComponent}/>
+        <Route exact path='/team' component={TeamComponent}/>
+        <Route component={NotFoundComponent}/>
+        </Switch>
+        
+        </div>
+      </Router>
     );
   }
 }
