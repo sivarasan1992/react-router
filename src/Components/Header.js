@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 function HeaderComponent(){
     return(
-        <ul>
-            <li>
+        <div className="listWrapper">
+            <div className="listItems">
 <Link to='/'>Home</Link>
-            </li>
-            <li>
+            </div>
+            <div className="listItems">
 <Link to='/about'>About</Link>
-            </li>
-            <li>
+            </div>
+            <div className="listItems">
 <Link to='/team'>Team</Link>
-            </li>
-        </ul>
+            </div>
+        </div>
     )
 }
 export default HeaderComponent
