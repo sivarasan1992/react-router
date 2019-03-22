@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto auto auto;
     grid-column-gap: 50px;
-    background-color: #2196F3;
+    background-color: rgb(154, 136, 136);
   padding: 10px;
 }
 .listItems{

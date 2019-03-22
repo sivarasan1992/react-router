@@ -6,13 +6,10 @@ function HeaderComponent(){
     return(
         <div className="listWrapper">
             <div className="listItems">
-<Link to='/'>Home</Link>
+<Link to='/'>Search Records</Link>
             </div>
             <div className="listItems">
-<Link to='/about'>About</Link>
-            </div>
-            <div className="listItems">
-<Link to='/team'>Team</Link>
+<Link to='/addRecords'>Add Records</Link>
             </div>
         </div>
     )

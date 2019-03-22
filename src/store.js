@@ -1,7 +1,9 @@
 import { configureStore } from 'redux-starter-kit'
-import rotateReducer from './reducers/rotateReducer';
+import reducer from './reducers';
+import thunk from 'redux-thunk';
 
 const store = configureStore({
-  reducer: rotateReducer
+  reducer,
+  middleware: [thunk],
 })
 export default store;

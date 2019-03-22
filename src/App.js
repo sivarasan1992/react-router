@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import HomeComponent from "./Components/Home";
-import AboutComponent from "./Components/About";
-import TeamComponent from "./Components/Team";
+import SearchHeadHunter from "./Components/SearchHeadHunter";
+import CreateHeadHunters from "./Components/CreateHeadHunters";
 import HeaderComponent from "./Components/Header";
 import NotFoundComponent from "./Components/NotFound";
-import rotateAction from "./actions/rotateAction";
-import logo from "./logo.svg";
+import { createHeadHunter } from "./actions/HeadHuntersAction";
 
 class App extends Component {
   render() {
@@ -16,22 +14,19 @@ class App extends Component {
       <Router>
         <div>
           <HeaderComponent />
-          <div className="img">
-          <img
-            src={logo}
-            className={
-              "App-logo" + (this.props.rotating ? "" : " App-logo-paused")
-            }
-            alt="logo"
-            onClick={() => this.props.rotateAction(!this.props.rotating)}
-          />
-          </div>
-          
+
           <div className="MainWrapper">
             <Switch>
-              <Route exact path="/" component={HomeComponent} />
-              <Route exact path="/about" component={AboutComponent} />
-              <Route exact path="/team" component={TeamComponent} />
+              <Route exact path="/" component={() => <SearchHeadHunter />} />
+              <Route
+                exact
+                path="/addRecords"
+                component={() => (
+                  <CreateHeadHunters
+                    onSave={data => this.props.createHeadHunter(data)}
+                  />
+                )}
+              />
               <Route component={NotFoundComponent} />
             </Switch>
           </div>
@@ -41,14 +36,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
-});
 const mapDispatchToProps = dispatch => ({
-  rotateAction: payload => dispatch(rotateAction(payload))
+  createHeadHunter: data => dispatch(createHeadHunter(data))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(App);
